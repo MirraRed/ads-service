@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertisements</title>
+</head>
+<body>
+    <h1>Advertisements</h1>
+
+    {% for ad in ads %}
+        <div>
+            <h2>{{ ad.title }}</h2>
+            <p>{{ ad.ad_text }}</p>
+            <p>Location: {{ ad.location.location_name }}</p>
+            <p>Author: {{ ad.author.login }}</p>
+        </div>
+        <hr>
+    {% endfor %}
+
+    <p>Page: {{ page }}</p>
+    <p>Limit: {{ limit }}</p>
+    <p>Visibility: {{ visibility }}</p>
+
+    <p><a href="{% url 'get_all_ads' %}?page={{ page|add:'1' }}&limit={{ limit }}&visibility={{ visibility }}">Next Page</a></p>
+</body>
+</html>
